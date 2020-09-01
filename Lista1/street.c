@@ -86,38 +86,3 @@ int main(){
     }while(n!=0);
     return 0;
 }
-
-/*
-int main(){
-  int i=1, x, n, *y, count=0, aux=0, k=0;
-  pilha p1, p2;
-  inicializa(&p1);
-  inicializa(&p2);
-  scanf("%d",&n);
-  do{
-      scanf("%d",&x);
-      if(x==i){
-        empilha(&p1,x);
-        i++;
-      }
-      else if(x!=i && x!=0){
-        empilha(&p2,x);
-        k++;
-      }
-      count++;
-  }while(x!=0);
-  count--;
-  for(int z=0; z<k; z++)
-    empilha(&p1, desempilha(&p2));
-  for(int z=count; z>0; z--)
-    if(desempilha(&p1)==z)
-      aux++;
-  if(aux==count)
-    printf("yes\n");
-  else
-    printf("no\n");
-  destroi(&p1);
-  destroi(&p2);
-  return 0;
-}
-*/
