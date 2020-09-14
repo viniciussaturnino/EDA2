@@ -26,19 +26,20 @@ void quicksort(int *v, int l, int r) {
     quicksort(v, j+1, r);
 }
 
-int main() {
-    int *v, i=0, j;
-    v = malloc(sizeof(int));
-    while (scanf("%d", &v[i])!=EOF) {
-        i++;
-        v = realloc(v, (i+1)*sizeof(int));
-    }
-    
-    quicksort(v, 0, i-1);
+int main(){
+    int *v,n;
+    scanf("%d",&n);
+    v = malloc(n*sizeof(int));
 
-    for(j=0; j<i-1; j++)
-        printf("%d ", v[j]);
-    printf("%d\n", v[j]);
-    
+    for(int i=0; i<n; i++)
+      scanf("%d", &v[i]);
+
+    quicksort(v, 0, n-1);
+
+    printf("%d", v[0]);
+    for(int i=1; i<n; i++)
+        printf(" %d", v[i]);
+    printf("\n");
+
     return 0;
 }

@@ -5,14 +5,11 @@
 #define exch(a, b) {int t = a; a = b; b = t;}
 #define cmpexch(a, b) {if(less(b,a)) exch(a, b);}
 
-void insertion(int *v, int l, int r, int h) {
-    for(int i=r; i>l; i--)
-        cmpexch(v[i-1], v[i]);
-
+void insertionsortH(int *v, int l, int r, int h) {
     for(int i=l+h; i<=r; i++) {
         int j = i;
-        int tmp = v[j];
-        while (j>=l+h && less(tmp, v[j-1])){
+        int tmp = v[i];
+        while (j>=l+h && less(tmp, v[j-h])){
             v[j] = v[j-h];
             j-=h;
         }
@@ -20,24 +17,27 @@ void insertion(int *v, int l, int r, int h) {
     }
 }
 
-void shellsort(int *v, int l, int r) {
-    for(int i=(r-l)-2; i>0; i-=2)
-        insertion(v,l,r,i);
+void shellsort(int *v, int l, int r){
+    int h;
+    for(h=1; h<=(r-l)/9; h=3*h+1);
+    for(;h>0;h/=3)
+        insertionsortH(v,l,r,h);
 }
 
-int main() {
-    int *v, i=0, j;
-    v = malloc(sizeof(int));
-    while (scanf("%d", &v[i])!=EOF) {
-        i++;
-        v = realloc(v, (i+1)*sizeof(int));
-    }
-    
-    shellsort(v, 0, i-1);
+int main(){
+    int *v,n;
+    scanf("%d",&n);
+    v = malloc(n*sizeof(int));
 
-    for(j=0; j<i-1; j++)
-        printf("%d ", v[j]);
-    printf("%d\n", v[j]);
-    
+    for(int i=0; i<n; i++)
+      scanf("%d", &v[i]);
+
+    shellsort(v, 0, n-1);
+
+    printf("%d", v[0]);
+    for(int i=1; i<n; i++)
+        printf(" %d", v[i]);
+    printf("\n");
+
     return 0;
 }
