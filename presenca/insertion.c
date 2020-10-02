@@ -20,10 +20,10 @@ void insertion(int *v, int l, int r) {
     }
 }
 
-int main(){
+int main() {
     int *v,n;
     scanf("%d",&n);
-    v = malloc(n*sizeof(int));
+    v = malloc(n * sizeof(int));
 
     for(int i=0; i<n; i++)
       scanf("%d", &v[i]);
