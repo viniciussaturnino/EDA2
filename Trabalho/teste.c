@@ -12,17 +12,8 @@ typedef struct item
 #define keyCode(a) (a.code)
 #define less(a, b) (key(a) < key(b))
 #define lessCode(a, b) (keyCode(a) < keyCode(b))
-#define exch(a, b) \
-  {                \
-    Item t = a;    \
-    a = b;         \
-    b = t;         \
-  }
-#define cmpexch(a, b) \
-  {                   \
-    if (less(b, a))   \
-      exch(a, b);     \
-  }
+#define exch(a, b) { Item t = a; a = b; b = t; }
+#define cmpexch(a, b) { if (less(b, a)) exch(a, b); }
 
 Item presidente[100];
 Item senador[1000];
