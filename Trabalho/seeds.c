@@ -72,7 +72,7 @@ int main() {
   int n, codigo, nota, i=0;
   Semente semente;
   scanf("%d", &n);
-  Semente *sementes = malloc(10000 * sizeof(Semente));
+  Semente *sementes = malloc(1000000000 * sizeof(Semente));
   while(scanf("%d %d", &codigo, &nota) == 2) {
     sementes[i].codigo = codigo;
     sementes[i].nota = nota;
